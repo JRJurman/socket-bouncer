@@ -1,0 +1,28 @@
+{
+  "name": "socket-bouncer",
+  "version": "1.0.0",
+  "description": "Websocket Service to Echo Messages back",
+  "main": "index.js",
+  "scripts": {
+    "start": "node service.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JRJurman/socket-bouncer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JRJurman/socket-bouncer/issues"
+  },
+  "homepage": "https://github.com/JRJurman/socket-bouncer#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-ws": "^3.0.0",
+    "internal-ip": "^1.2.0"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}

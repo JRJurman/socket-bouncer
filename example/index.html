@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <h1>WebSocket Example</h1>
+    <p>This is a test!</p>
+    <script>
+      const socket = new WebSocket(`ws://localhost:5150/foo`)
+
+      socket.onmessage = ({ data }) => {
+        console.log(data)
+      }
+
+      socket.onopen = () => {
+        console.log('connected!')
+        socket.send(JSON.stringify({
+          action: 'CONNECTED!'
+        }))
+      }
+    </script>
+  </body>
+</html>
