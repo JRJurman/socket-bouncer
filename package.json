@@ -19,7 +19,7 @@
   "homepage": "https://github.com/JRJurman/socket-bouncer#readme",
   "dependencies": {
     "express": "^4.15.3",
-    "express-ws": "^3.0.0",
+    "express-ws": "^4.0.0",
     "internal-ip": "^1.2.0"
   },
   "devDependencies": {
