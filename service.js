@@ -18,7 +18,6 @@ const server = https.createServer(options, app);
 const wsOptions = { clientTracking: true }
 const WS = expressWs(app, server, { wsOptions })
 const wsServer = WS.getWss()
-const app = WS.app
 
 // validate origin
 app.use((req, res, next) => {
@@ -46,6 +45,6 @@ app.ws('*', (wsclient, req) => {
 const ip = internalIp()
 const port = 5150
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Service running on  ${ip}:${port}`)
 })
