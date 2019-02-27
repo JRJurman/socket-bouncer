@@ -1,11 +1,23 @@
+const https = require('https');
+const fs = require('fs');
 const express = require('express')
 const expressWs = require('express-ws')
 const internalIp = require('internal-ip')
 const whitelist = require('./whitelist')
 
+// ssl keys from lets encrypt
+// generate keys with `sudo certbot renew`
+const options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/socket-bouncer.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/socket-bouncer.com/cert.pem')
+};
+
+const app = express();
+const server = https.createServer(options, app);
+
 const wsOptions = { clientTracking: true }
-const WS = expressWs(express(), null, { wsOptions })
-const server = WS.getWss()
+const WS = expressWs(app, server, { wsOptions })
+const wsServer = WS.getWss()
 const app = WS.app
 
 // validate origin
@@ -25,7 +37,7 @@ app.ws('*', (wsclient, req) => {
   wsclient.url = req.url
 
   wsclient.on('message', (msg) => {
-    Array.from(server.clients)
+    Array.from(wsServer.clients)
       .filter(client => client.url === req.url)
       .forEach(client => client.send(msg))
   })
