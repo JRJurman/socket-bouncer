@@ -19,6 +19,10 @@ const wsOptions = { clientTracking: true }
 const WS = expressWs(app, server, { wsOptions })
 const wsServer = WS.getWss()
 
+app.get('/info', (req, res) => {
+  res.send('Thanks for using socket-bouncer! To read more check out: https://github.com/JRJurman/socket-bouncer')
+})
+
 // validate origin
 app.use((req, res, next) => {
   const origin = req.get('origin')
