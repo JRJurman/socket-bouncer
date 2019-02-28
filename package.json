@@ -4,7 +4,8 @@
   "description": "Websocket Service to Echo Messages back",
   "main": "index.js",
   "scripts": {
-    "start": "node service.js"
+    "start": "node service.js",
+    "service": "nohup npm start &"
   },
   "repository": {
     "type": "git",
