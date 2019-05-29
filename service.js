@@ -47,7 +47,7 @@ app.ws('*', (wsclient, req) => {
 })
 
 const ip = internalIp()
-const port = 5150
+const port = 443
 
 server.listen(port, () => {
   console.log(`Service running on  ${ip}:${port}`)
